@@ -216,6 +216,12 @@ class MQV0002():
     self.__write(4604, 0)
 
   #____________________________________________________________________________
+  def init(self):
+    ''' initialize. '''
+    self.__write(5018, 3)
+    self.__write(5019, 2)
+
+  #____________________________________________________________________________
   def run(self, val):
     ''' run command. '''
     self.status = True
@@ -227,6 +233,8 @@ class MQV0002():
       self.valve_off()
     elif val == 'reset':
       self.reset_int()
+    elif val == 'init':
+      self.init()
     else:
       try:
         self.set_flow(int(int(val)/10))
